@@ -44,12 +44,10 @@ public class Issue {
     }
 
     @Column
-    @NotNull
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @Column
-    @NotNull
     @UpdateTimestamp
     private LocalDateTime modifiedAt;
 

@@ -38,11 +38,37 @@ public class IssueController {
     public ResponseEntity<Issue> createIssue(
             @RequestBody Issue issue
     ) {
-        issue.setCreatedAt(LocalDateTime.now());
-        issue.setModifiedAt(LocalDateTime.now());
-        // issue.setUser(authenticatedUser.getUser());
+        issue.setUser(authenticatedUser.getUser());
         Issue savedIssue = issueRepository.save(issue);
         return ResponseEntity.ok(savedIssue);
+    }
+
+    @Secured({ "ROLE_ADMIN" })
+    @PatchMapping("/{id}")
+    public ResponseEntity<Issue> modifyIssue(
+            @PathVariable Integer id,
+            @RequestBody Issue issue
+    ) {
+        Optional<Issue> oIssue = issueRepository.findById(id);
+        if (oIssue.isPresent()) {
+            if (issue.getStatus() == null) {
+                return ResponseEntity.badRequest().build();
+            }
+            Issue oldIssue = oIssue.get();
+            oldIssue.setStatus(issue.getStatus());
+            Issue savedIssue = issueRepository.save(oldIssue);
+
+            /*
+            issue.setId(oldIssue.getId());
+            issue.setMessages(oldIssue.getMessages());
+            ...
+             */
+
+            return ResponseEntity.ok(savedIssue);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
     @Secured({ "ROLE_USER", "ROLE_ADMIN" })

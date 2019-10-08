@@ -1,6 +1,7 @@
 package hu.elte.issuetracker.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,6 +9,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+
+import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
 @Entity
 @Data
@@ -24,9 +27,11 @@ public class User {
     private String name;
 
     @Column(nullable = false)
+    @JsonProperty(access = WRITE_ONLY)
     private String username;
 
     @Column(nullable = false)
+    @JsonProperty(access = WRITE_ONLY)
     private String password;
 
     @Column(nullable = false)
