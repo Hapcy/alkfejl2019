@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -43,13 +44,19 @@ public class Issue {
     }
 
     @Column
-    @NotNull
     @CreationTimestamp
     private LocalDateTime createdAt;
 
     @Column
-    @NotNull
     @UpdateTimestamp
     private LocalDateTime modifiedAt;
 
+    @OneToMany(mappedBy = "issue")
+    private List<Message> messages;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToMany
+    private List<Label> labels;
 }
