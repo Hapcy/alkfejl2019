@@ -10,6 +10,9 @@ import { LandingComponent } from './landing/landing.component';
 import { IssueListComponent } from './issue-list/issue-list.component';
 import { IssueFormComponent } from './issue-form/issue-form.component';
 import {MatInputModule} from '@angular/material/input';
+import { RoutingModule } from './routing/routing.module';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { StatusFilterComponent } from './status-filter/status-filter.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,7 @@ import {MatInputModule} from '@angular/material/input';
     LandingComponent,
     IssueListComponent,
     IssueFormComponent,
+    StatusFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +29,8 @@ import {MatInputModule} from '@angular/material/input';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    RoutingModule,
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

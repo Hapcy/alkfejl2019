@@ -1,12 +1,22 @@
 <mat-toolbar color="primary">
-    <button mat-button href="/">
+    <button
+        mat-button
+        routerLink="/"
+    >
         <mat-icon>home</mat-icon>
         Issue tracker
     </button>
-    <button mat-button href="/issues">My issues</button>
-    <button mat-button href="/issues/add">New issues</button>
+    <button
+        mat-button
+        routerLink="/issues"
+    >
+        My issues
+    </button>
+    <button
+        mat-button
+        routerLink="/issues/new"
+    >
+        New issues
+    </button>
 </mat-toolbar>
-<app-landing></app-landing>
-<app-issue-list></app-issue-list>
-<app-issue-form></app-issue-form>
-
+<router-outlet></router-outlet>

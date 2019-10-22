@@ -1,5 +1,11 @@
 <div>
     <h1>Issue list</h1>
+    <div>
+        <app-status-filter
+            [statusFilter]="statusFilter"
+            (filterChange)="filterChange($event);"
+        ></app-status-filter>
+    </div>
     <table>
         <thead>
             <tr>
@@ -9,10 +15,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Rossz projektor</td>
-                <td>2-201</td>
-                <td>NEW</td>
+            <!--
+                ez az if nem muszáj, mert ha üres az issues,
+                akkor úgysem fog megjelenni egy sor sem.
+                Csak az ng-container szemléltetése miatt van itt.
+            -->
+            <ng-container
+                *ngIf="filteredIssues.length > 0"
+            >
+                <tr
+                    *ngFor="let issue of filteredIssues"
+                >
+                    <td>{{ issue.title }}</td>
+                    <td>{{ issue.place }}</td>
+                    <td>{{ issue.status }}</td>
+                </tr>
+            </ng-container>
+            <tr
+                *ngIf="filteredIssues.length === 0"
+            >
+                <td
+                    colspan="3"
+                >No issues</td>
             </tr>
         </tbody>
     </table>

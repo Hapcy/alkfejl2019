@@ -1,0 +1,17 @@
+<mat-button-toggle-group
+    [value]="statusFilter"
+    (valueChange)="change($event);"
+>
+    <mat-button-toggle value="">
+        All
+    </mat-button-toggle>
+    <mat-button-toggle value="NEW">
+        New
+    </mat-button-toggle>
+    <mat-button-toggle value="DOING">
+        Doing
+    </mat-button-toggle>
+    <mat-button-toggle value="DONE">
+        Done
+    </mat-button-toggle>
+</mat-button-toggle-group>
