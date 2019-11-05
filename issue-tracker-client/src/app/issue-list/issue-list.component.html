@@ -1,10 +1,7 @@
 <div>
     <h1>Issue list</h1>
     <div>
-        <app-status-filter
-            [statusFilter]="statusFilter"
-            (filterChange)="filterChange($event);"
-        ></app-status-filter>
+        <app-status-filter></app-status-filter>
     </div>
     <table>
         <thead>
@@ -21,10 +18,10 @@
                 Csak az ng-container szemléltetése miatt van itt.
             -->
             <ng-container
-                *ngIf="filteredIssues.length > 0"
+                *ngIf="issueService.filteredIssues.length > 0"
             >
                 <tr
-                    *ngFor="let issue of filteredIssues"
+                    *ngFor="let issue of issueService.filteredIssues"
                 >
                     <td>{{ issue.title }}</td>
                     <td>{{ issue.place }}</td>
@@ -32,7 +29,7 @@
                 </tr>
             </ng-container>
             <tr
-                *ngIf="filteredIssues.length === 0"
+                *ngIf="issueService.filteredIssues.length === 0"
             >
                 <td
                     colspan="3"

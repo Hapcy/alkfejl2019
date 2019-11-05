@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { IssueService } from '../issue.service';
 
 @Component({
   selector: 'app-status-filter',
@@ -7,16 +8,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class StatusFilterComponent implements OnInit {
 
-  @Input() statusFilter: string;
+  @Input() statusFilter: string = '';
 
   @Output() filterChange: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private issueService: IssueService
+  ) { }
 
   ngOnInit() {
+    this.change(this.statusFilter);
   }
 
-  change(e: any) {
+  change(e: string) {
+    this.issueService.filterChange(e);
     this.filterChange.emit(e);
   }
 

@@ -13,6 +13,8 @@ import {MatInputModule} from '@angular/material/input';
 import { RoutingModule } from './routing/routing.module';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { StatusFilterComponent } from './status-filter/status-filter.component';
+import {MatSelectModule} from '@angular/material/select';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { StatusFilterComponent } from './status-filter/status-filter.component';
     MatInputModule,
     RoutingModule,
     MatButtonToggleModule,
+    MatSelectModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
