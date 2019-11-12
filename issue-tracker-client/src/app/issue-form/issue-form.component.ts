@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Issue } from 'src/domain/issue';
 import { FormGroup } from '@angular/forms';
 import { IssueStatus } from 'src/domain/issue-status';
+import { IssueService } from '../issue.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-issue-form',
@@ -24,6 +26,8 @@ export class IssueFormComponent implements OnInit {
   issue: Issue;
 
   constructor(
+    private issueService: IssueService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -42,7 +46,8 @@ export class IssueFormComponent implements OnInit {
     if (!form.valid) {
       return;
     }
-    console.log(this.issue);
+    this.issueService.createIssue(form.value);
+    this.router.navigate(['/', 'issues']);
   }
 
 }

@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <span>Title:</span>
+        <span>{{ issue?.title }}</span>
+    </div>
+    <div>
+        <span>Creation date:</span>
+        <span>{{ issue?.createdAt | date:'yyyy.MM.dd.' }}</span>
+    </div>
+    <div>
+        <span>Status:</span>
+        <span>{{ issue?.status }}</span>
+    </div>
+    <div>
+        <span>Place:</span>
+        <span>{{ issue?.place }}</span>
+    </div>
+    <div>
+        <span>Description:</span>
+        <span>{{ issue?.description }}</span>
+    </div>
+</div>

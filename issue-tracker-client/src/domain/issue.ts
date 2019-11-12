@@ -6,6 +6,6 @@ export interface Issue {
     place: string;
     title: string;
     status: IssueStatus;
-    createdAt: string;
-    modifiedAt: string;
+    createdAt: Date;
+    modifiedAt: Date;
 }

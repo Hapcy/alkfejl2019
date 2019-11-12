@@ -15,6 +15,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { StatusFilterComponent } from './status-filter/status-filter.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IssueDetailComponent } from './issue-detail/issue-detail.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderInterceptor } from './header-interceptor';
 
 @NgModule({
   declarations: [
@@ -23,10 +26,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IssueListComponent,
     IssueFormComponent,
     StatusFilterComponent,
+    IssueDetailComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -36,7 +41,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
