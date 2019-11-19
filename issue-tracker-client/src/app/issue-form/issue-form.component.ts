@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Issue } from 'src/domain/issue';
 import { FormGroup } from '@angular/forms';
 import { IssueStatus } from 'src/domain/issue-status';
@@ -12,42 +12,30 @@ import { Router } from '@angular/router';
 })
 export class IssueFormComponent implements OnInit {
 
+  @Input() mode: 'create' | 'edit';
+  @Input() issue: Issue;
+  @Output() issueSubmit: EventEmitter<Issue> = new EventEmitter();
+
   statuses = [{
     label: 'New',
     value: 'NEW',
   }, {
     label: 'In progress',
-    value: 'IN_PROGRESS',
+    value: 'DOING',
   }, {
     label: 'Done',
     value: 'DONE',
   }]
 
-  issue: Issue;
+  constructor() { }
 
-  constructor(
-    private issueService: IssueService,
-    private router: Router
-  ) { }
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.issue = {
-      id: null,
-      title: '',
-      place: '',
-      status: 'NEW' as IssueStatus,
-      description: '',
-      createdAt: null,
-      modifiedAt: null,
-    };
-  }
-
-  submitIssue(form: FormGroup) {
+  async submitIssue(form: FormGroup) {
     if (!form.valid) {
       return;
     }
-    this.issueService.createIssue(form.value);
-    this.router.navigate(['/', 'issues']);
+    this.issueSubmit.emit(form.getRawValue() as Issue);
   }
 
 }

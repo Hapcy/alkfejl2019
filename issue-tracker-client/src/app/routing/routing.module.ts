@@ -5,6 +5,9 @@ import { IssueListComponent } from "../issue-list/issue-list.component";
 import { IssueFormComponent } from '../issue-form/issue-form.component';
 import { LandingComponent } from '../landing/landing.component';
 import { IssueDetailComponent } from '../issue-detail/issue-detail.component';
+import { IssueNewComponent } from '../issue-new/issue-new.component';
+import { IssueEditComponent } from '../issue-edit/issue-edit.component';
+import { LoginComponent } from '../login/login.component';
 // import { IssueDetailComponent } from '../issue-detail/issue-detail.component';
 
 const routes: Routes = [
@@ -19,11 +22,19 @@ const routes: Routes = [
   },
   {
     path: 'issues/new',
-    component: IssueFormComponent
+    component: IssueNewComponent
   },
   {
     path: 'issues/:id',
     component: IssueDetailComponent
+  },
+  {
+    path: 'issues/:id/edit',
+    component: IssueEditComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',

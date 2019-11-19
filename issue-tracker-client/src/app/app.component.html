@@ -6,17 +6,27 @@
         <mat-icon>home</mat-icon>
         Issue tracker
     </button>
-    <button
-        mat-button
-        routerLink="/issues"
+    <ng-container
+        *ngIf="authService.isLoggedIn"
     >
-        My issues
-    </button>
-    <button
-        mat-button
-        routerLink="/issues/new"
+        <button
+            mat-button
+            routerLink="/issues"
+        >
+            My issues
+        </button>
+        <button
+            mat-button
+            routerLink="/issues/new"
+        >
+            New issues
+        </button>
+        <button mat-button (click)="authService.logout()">Logout</button>
+    </ng-container>
+    <ng-container
+        *ngIf="!authService.isLoggedIn"
     >
-        New issues
-    </button>
+        <button mat-button routerLink="/login">Login</button>
+    </ng-container>
 </mat-toolbar>
 <router-outlet></router-outlet>

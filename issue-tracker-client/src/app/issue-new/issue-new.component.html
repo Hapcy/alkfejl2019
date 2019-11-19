@@ -1,0 +1,9 @@
+<div style="padding-left: 4em;">
+    <h1>New issue</h1>
+    <app-issue-form
+        [issue]="issue"
+        [mode]="'create'"
+        (issueSubmit)="submitIssue($event)"
+    ></app-issue-form>
+</div>
+  

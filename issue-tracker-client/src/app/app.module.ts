@@ -18,6 +18,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './header-interceptor';
+import { IssueNewComponent } from './issue-new/issue-new.component';
+import { IssueEditComponent } from './issue-edit/issue-edit.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { HeaderInterceptor } from './header-interceptor';
     IssueFormComponent,
     StatusFilterComponent,
     IssueDetailComponent,
+    IssueNewComponent,
+    IssueEditComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

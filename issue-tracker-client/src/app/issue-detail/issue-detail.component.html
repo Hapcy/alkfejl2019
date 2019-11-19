@@ -19,4 +19,18 @@
         <span>Description:</span>
         <span>{{ issue?.description }}</span>
     </div>
+    <div>
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="editIssue()"
+        >Edit</button>
+    </div>
+    <div>
+        <ul>
+            <li *ngFor="let message of issue.messages">
+                {{ message.body }}
+            </li>
+        </ul>
+    </div>
 </div>

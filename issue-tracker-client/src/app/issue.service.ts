@@ -28,9 +28,12 @@ export class IssueService {
     return this.createIssueModel(issue);
   }
 
-  createIssue(issue: Issue) {
-    issue.id = 3;
-    this.issues.push(issue);
+  async createIssue(issue: Issue): Promise<any> {
+    await this.http.post('issues', issue).toPromise();
+  }
+
+  async modifyIssue(issue: Issue): Promise<any> {
+    await this.http.patch(`issues/${issue.id}`, issue).toPromise();
   }
 
   filterChange(filterValue: string) {
