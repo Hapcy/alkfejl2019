@@ -15,20 +15,28 @@ export class AuthService {
   get token() {
     return btoa(`${this.user.username}:${this.user.password}`);
   }
+  get role(): UserRole {
+    return this.user.role;
+  }
   private user: User;
 
   constructor(
     private router: Router,
     private http: HttpClient
   ) {
-    this.logout();
+    this.logout(false);
+  }
+
+  hasRole(roles: UserRole[]): boolean {
+    return roles.some(
+      role => role === this.role);
   }
 
   async login(username: string, password: string) {
     const oldUser = this.user;
     this.user = {
       name: null,
-      role: null,
+      role: UserRole.Guest,
       username: username,
       password: password,
     };
@@ -42,14 +50,16 @@ export class AuthService {
     }
   }
 
-  logout() {
+  logout(shouldNavigateToRoot: boolean = true) {
     this.user = {
       name: 'Guest',
       username: null,
       password: null,
       role: UserRole.Guest,
     };
-    // this.router.navigate(['/']);
+    if (shouldNavigateToRoot) {
+      this.router.navigate(['/']);
+    }
   }
 
 }

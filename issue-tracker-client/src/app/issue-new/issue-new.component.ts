@@ -27,6 +27,7 @@ export class IssueNewComponent implements OnInit {
       description: '',
       createdAt: null,
       modifiedAt: null,
+      messages: null,
     };
   }
 

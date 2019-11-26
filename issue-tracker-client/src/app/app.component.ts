@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service';
+import { UserRole } from 'src/domain/user-role';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,8 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  UserRole = UserRole;
+
   currentPage: 'list' | 'landing' | 'form' = 'landing';
 
   constructor(

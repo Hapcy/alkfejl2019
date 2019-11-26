@@ -8,6 +8,8 @@ import { IssueDetailComponent } from '../issue-detail/issue-detail.component';
 import { IssueNewComponent } from '../issue-new/issue-new.component';
 import { IssueEditComponent } from '../issue-edit/issue-edit.component';
 import { LoginComponent } from '../login/login.component';
+import { UserRole } from 'src/domain/user-role';
+import { RoleGuard } from '../role.guard';
 // import { IssueDetailComponent } from '../issue-detail/issue-detail.component';
 
 const routes: Routes = [
@@ -18,23 +20,43 @@ const routes: Routes = [
   },
   {
     path: 'issues',
-    component: IssueListComponent
+    component: IssueListComponent,
+    data: {
+      roles: [UserRole.Admin, UserRole.User],
+    },
+    canActivate: [RoleGuard],
   },
   {
     path: 'issues/new',
-    component: IssueNewComponent
+    component: IssueNewComponent,
+    data: {
+      roles: [UserRole.User],
+    },
+    canActivate: [RoleGuard],
   },
   {
     path: 'issues/:id',
-    component: IssueDetailComponent
+    component: IssueDetailComponent,
+    data: {
+      roles: [UserRole.Admin, UserRole.User],
+    },
+    canActivate: [RoleGuard],
   },
   {
     path: 'issues/:id/edit',
-    component: IssueEditComponent
+    component: IssueEditComponent,
+    data: {
+      roles: [UserRole.Admin],
+    },
+    canActivate: [RoleGuard],
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    data: {
+      roles: [UserRole.Guest],
+    },
+    canActivate: [RoleGuard],
   },
   {
     path: '**',

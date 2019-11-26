@@ -21,6 +21,7 @@ import { HeaderInterceptor } from './header-interceptor';
 import { IssueNewComponent } from './issue-new/issue-new.component';
 import { IssueEditComponent } from './issue-edit/issue-edit.component';
 import { LoginComponent } from './login/login.component';
+import { RoleDirective } from './role.directive';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LoginComponent } from './login/login.component';
     IssueNewComponent,
     IssueEditComponent,
     LoginComponent,
+    RoleDirective,
   ],
   imports: [
     BrowserModule,

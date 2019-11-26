@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Issue } from "src/domain/issue";
 import { ActivatedRoute, Router } from "@angular/router";
 import { IssueService } from "../issue.service";
+import { UserRole } from 'src/domain/user-role';
 
 @Component({
   selector: "app-issue-detail",
@@ -9,6 +10,7 @@ import { IssueService } from "../issue.service";
   styleUrls: ["./issue-detail.component.css"]
 })
 export class IssueDetailComponent implements OnInit {
+  UserRole = UserRole;
   issue: Issue;
 
   constructor(
