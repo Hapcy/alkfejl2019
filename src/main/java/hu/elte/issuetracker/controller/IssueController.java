@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/issues")
 public class IssueController {
@@ -43,6 +44,19 @@ public class IssueController {
         return ResponseEntity.ok(savedIssue);
     }
 
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    @GetMapping("/{id}")
+    public ResponseEntity<Issue> getIssue(
+            @PathVariable Integer id
+    ) {
+        Optional<Issue> oIssue = issueRepository.findById(id);
+        if (oIssue.isPresent()) {
+            return ResponseEntity.ok(oIssue.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @Secured({ "ROLE_ADMIN" })
     @PatchMapping("/{id}")
     public ResponseEntity<Issue> modifyIssue(
@@ -56,6 +70,9 @@ public class IssueController {
             }
             Issue oldIssue = oIssue.get();
             oldIssue.setStatus(issue.getStatus());
+            oldIssue.setPlace(issue.getPlace());
+            oldIssue.setDescription(issue.getDescription());
+
             Issue savedIssue = issueRepository.save(oldIssue);
 
             /*

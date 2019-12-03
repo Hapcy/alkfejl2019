@@ -18,7 +18,7 @@
         <button
             mat-button
             routerLink="/issues/new"
-            [appRole]="[UserRole.User]"
+            *appRole="[UserRole.User]"
         >
             New issues
         </button>

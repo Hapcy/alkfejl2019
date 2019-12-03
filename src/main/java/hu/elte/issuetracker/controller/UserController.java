@@ -2,6 +2,7 @@ package hu.elte.issuetracker.controller;
 
 import hu.elte.issuetracker.model.User;
 import hu.elte.issuetracker.repository.UserRepository;
+import hu.elte.issuetracker.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,9 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
 
     @Autowired
     private UserRepository userRepository;
@@ -31,8 +36,8 @@ public class UserController {
     }
 
     @GetMapping("login")
-    public ResponseEntity login() {
-        return ResponseEntity.ok().build();
+    public ResponseEntity<User> login() {
+        return ResponseEntity.ok(authenticatedUser.getUser());
     }
 
 }

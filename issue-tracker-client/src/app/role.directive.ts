@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, OnInit } from '@angular/core';
+import { Directive, Input, ElementRef, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { UserRole } from 'src/domain/user-role';
 import { AuthService } from './auth.service';
 
@@ -10,13 +10,14 @@ export class RoleDirective implements OnInit {
   @Input() appRole: UserRole[];
 
   constructor(
-    private elementRef: ElementRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private templateRef: TemplateRef<any>,
+    private viewContainerRef: ViewContainerRef
   ) {}
 
   ngOnInit() {
-    if (!this.authService.hasRole(this.appRole)) {
-      this.elementRef.nativeElement.style = 'display: none;';
+    if (this.authService.hasRole(this.appRole)) {
+      this.viewContainerRef.createEmbeddedView(this.templateRef);
     }
   }
 

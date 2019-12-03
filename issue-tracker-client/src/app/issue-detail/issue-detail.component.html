@@ -24,7 +24,7 @@
             mat-raised-button
             color="primary"
             (click)="editIssue()"
-            [appRole]="[UserRole.Admin]"
+            *appRole="[UserRole.Admin]"
         >Edit</button>
     </div>
     <div>

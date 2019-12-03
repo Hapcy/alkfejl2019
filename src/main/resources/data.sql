@@ -1,6 +1,6 @@
-INSERT INTO issue (title, description, place, status, created_at, modified_at) VALUES ('Rossz projektor', 'Nem kapcsol be a projektor', '2-209', 'NEW', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
-INSERT INTO issue (title, description, place, status, created_at, modified_at) VALUES ('Rossz projektor', 'Nem kapcsol be a projektor', '2-209', 'DOING', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
-INSERT INTO issue (title, description, place, status, created_at, modified_at) VALUES ('ZH mód', 'Bekapcsolva maradt a zh mód', '2-209', 'DONE', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
+INSERT INTO issue (title, description, place, status, created_at, modified_at) VALUES ('Rossz projektor', 'Nem kapcsol be a projektor', 'PC-209', 'NEW', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
+INSERT INTO issue (title, description, place, status, created_at, modified_at) VALUES ('Rossz projektor', 'Nem kapcsol be a projektor', 'PC-209', 'DOING', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
+INSERT INTO issue (title, description, place, status, created_at, modified_at) VALUES ('ZH mód', 'Bekapcsolva maradt a zh mód', 'PC-209', 'DONE', CURRENT_TIMESTAMP(),  CURRENT_TIMESTAMP());
 
 INSERT INTO user (name, username, password, role) VALUES ('Tibor', 'tibor', '$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..', 'ROLE_ADMIN');
 INSERT INTO user (name, username, password, role) VALUES ('László', 'laszlo', '$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..', 'ROLE_USER');
